@@ -1,0 +1,39 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/icon/caidan.png</file>
+        <file>image/icon/download.png</file>
+        <file>image/icon/download1.png</file>
+        <file>image/icon/duankai.png</file>
+        <file>image/icon/duankaihong.png</file>
+        <file>image/icon/duankaihong1.png</file>
+        <file>image/icon/enter.png</file>
+        <file>image/icon/ercibianma-.png</file>
+        <file>image/icon/exit.png</file>
+        <file>image/icon/fasong.png</file>
+        <file>image/icon/fasong_1.png</file>
+        <file>image/icon/hebing.png</file>
+        <file>image/icon/hex.png</file>
+        <file>image/icon/hfenping.png</file>
+        <file>image/icon/icon-user.png</file>
+        <file>image/icon/kaiguananniu-kai.png</file>
+        <file>image/icon/lianjie.png</file>
+        <file>image/icon/lianjie1.png</file>
+        <file>image/icon/max.png</file>
+        <file>image/icon/min.png</file>
+        <file>image/icon/protocol.png</file>
+        <file>image/icon/shang.png</file>
+        <file>image/icon/str.png</file>
+        <file>image/icon/switch-on.png</file>
+        <file>image/icon/upload.png</file>
+        <file>image/icon/upload1.png</file>
+        <file>image/icon/vfenping.png</file>
+        <file>image/icon/wangluo.png</file>
+        <file>image/icon/wangluo-.png</file>
+        <file>image/icon/xia.png</file>
+        <file>image/icon/you.png</file>
+        <file>image/icon/zuo.png</file>
+        <file>image/icon/exit-gray.png</file>
+        <file>image/icon/max-gray.png</file>
+        <file>image/icon/min-gray.png</file>
+    </qresource>
+</RCC>
