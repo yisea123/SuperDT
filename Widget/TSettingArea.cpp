@@ -12,15 +12,14 @@ TSettingArea::TSettingArea(QWidget *parent) : QWidget(parent)
 
 void TSettingArea::initVal()
 {
-    m_sIconSize = QSize(36,36);
+    m_sIconSize = QSize(32,32);
     m_nWidgetMainWidth = 300;
     m_nButtonMainWidth = m_sIconSize.width() + 4;
 }
 
 void TSettingArea::initUI()
 {
-/*    m_pWidgetMain = new QWidget(this)*/;
-
+    /*初始化背景*/
     this->setMaximumWidth(m_nWidgetMainWidth + m_sIconSize.width());
     this->setMinimumWidth(m_nButtonMainWidth);
     this->setFixedWidth(m_nWidgetMainWidth + m_sIconSize.width());
@@ -35,11 +34,8 @@ void TSettingArea::initUI()
     m_pWidgetSetting->setMinimumWidth(m_nWidgetMainWidth);
     m_pWidgetSetting->setStyleSheet("QWidget{background-color:#cccccc;}");
 
-    m_pButtonMain = new QPushButton(m_pWidgetSettingButton);
-    m_pButtonMain->setFixedWidth(m_nButtonMainWidth);
-    connect(m_pButtonMain,SIGNAL(clicked()),this,SLOT(slotButtonMain()));
-
-
+    /*初始化所有的设置按钮*/
+    initMainButton();
 
     m_pHLayout = new QHBoxLayout;
     m_pHLayout->addWidget(m_pWidgetSettingButton);
@@ -48,10 +44,59 @@ void TSettingArea::initUI()
     m_pHLayout->setContentsMargins(0, 0, 0, 0);
 
     this->setLayout(m_pHLayout);
+}
 
-//    QHBoxLayout *layout = new QHBoxLayout;
-//    layout->addWidget(m_pWidgetMain);
-//    this->setLayout(layout);
+void TSettingArea::initMainButton()
+{
+
+    m_pButtonMain = new QPushButton(m_pWidgetSettingButton);
+    m_pButtonMain->setFixedSize(m_sIconSize);
+    m_pButtonMain->setCheckable(true); // 设置允许选中
+    m_pButtonMain->setStyleSheet(getImageStytle("you.png"));
+    connect(m_pButtonMain,SIGNAL(clicked()),this,SLOT(slotButtonMain()));
+
+    m_pButtonUser = new QPushButton(m_pWidgetSettingButton);
+    m_pButtonUser->setFixedSize(m_sIconSize);
+    m_pButtonUser->setStyleSheet(getImageStytle("icon-user.png"));
+
+    m_pButtonMenu = new QPushButton(m_pWidgetSettingButton);
+    m_pButtonMenu->setFixedSize(m_sIconSize);
+    m_pButtonMenu->setStyleSheet(getImageStytle("caidan.png"));
+
+//    m_pButtonUser = new QPushButton(m_pWidgetSettingButton);
+//    m_pButtonMain->setFixedSize(m_sIconSize);
+//    m_pButtonMain->setStyleSheet(getImageStytle("you.png"));
+
+    m_pButtonRecvSetting = new QPushButton(m_pWidgetSettingButton);
+    m_pButtonRecvSetting->setFixedSize(m_sIconSize);
+    m_pButtonRecvSetting->setStyleSheet(getImageStytle("download.png"));
+
+    m_pButtonCodec = new QPushButton(m_pWidgetSettingButton);
+    m_pButtonCodec->setFixedSize(m_sIconSize);
+    m_pButtonCodec->setStyleSheet(getImageStytle("hex.png"));
+
+    m_pButtonSend = new QPushButton(m_pWidgetSettingButton);
+    m_pButtonSend->setFixedSize(m_sIconSize);
+    m_pButtonSend->setStyleSheet(getImageStytle("fasong.png"));
+
+    m_pButtonConnect = new QPushButton(m_pWidgetSettingButton);
+    m_pButtonConnect->setFixedSize(m_sIconSize);
+    m_pButtonConnect->setStyleSheet(getImageStytle("lianjie.png"));
+
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->addWidget(m_pButtonMain);
+    layout->addStretch(1);
+
+    layout->addWidget(m_pButtonUser);
+    layout->addWidget(m_pButtonMenu);
+    layout->addWidget(m_pButtonRecvSetting);
+    layout->addWidget(m_pButtonCodec);
+    layout->addWidget(m_pButtonSend);
+    layout->addWidget(m_pButtonConnect);
+    layout->addStretch(1);
+    layout->setContentsMargins(2, 0, 2, 0);
+
+    m_pWidgetSettingButton->setLayout(layout);
 }
 
 void TSettingArea::slotButtonMain()
@@ -65,4 +110,21 @@ void TSettingArea::slotButtonMain()
         m_pWidgetSetting->setVisible(true);
         this->setFixedWidth(m_nWidgetMainWidth + m_sIconSize.width());
     }
+
+    /*设置按钮的图标*/
+    if(m_pButtonMain->isChecked()){
+        m_pButtonMain->setChecked(false);
+        m_pButtonMain->setStyleSheet(getImageStytle("zuo.png"));
+        qDebug()<<"设置按钮图标  为左" <<m_pButtonMain->isChecked();
+    }else{
+        m_pButtonMain->setChecked(true);
+        m_pButtonMain->setStyleSheet(getImageStytle("you.png"));
+        qDebug()<<"设置按钮图标  为右" << m_pButtonMain->isChecked();
+    }
+
+}
+
+QString TSettingArea::getImageStytle(QString strImage)
+{
+    return "QPushButton {border-image:url(:/image/icon/" + strImage + ")}";
 }

@@ -35,6 +35,7 @@ void TitleBar::initUI()
     m_pLabelIcon = new QLabel(this);
     m_pLabelIcon->setFixedSize(24,24);  //设置最大宽高和最小宽高固定  不再拉伸
     m_pLabelIcon->setScaledContents(true); //允许图片按比例缩小填充Label
+    m_pLabelIcon->setStyleSheet("QLabel {border-image:url(:/image/icon/logo32.png)}");
 
     m_pLabelTitle = new QLabel(this);
     m_pLabelTitle->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
@@ -56,6 +57,7 @@ void TitleBar::initUI()
 
 
     QHBoxLayout* layout = new QHBoxLayout;
+    layout->addSpacing(5);
     layout->addWidget(m_pLabelIcon);
     layout->addStretch(1);  //中间添加一个拉伸量 空白区
     layout->addWidget(m_pLabelTitle);

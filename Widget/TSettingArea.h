@@ -19,9 +19,9 @@ public slots:
 private:
     void initVal();
     void initUI();
-
+    void initMainButton();
 private:
-    QPushButton *m_pButtonMain;
+    QString getImageStytle(QString strImage);
     QWidget *m_pWidgetSettingButton;
     QWidget *m_pWidgetSetting;
     QWidget *m_pWidgetMain;
@@ -29,6 +29,13 @@ private:
     int m_nWidgetMainWidth;
     int m_nButtonMainWidth;
     QHBoxLayout *m_pHLayout;
+    QPushButton *m_pButtonMain;
+    QPushButton *m_pButtonUser;
+    QPushButton *m_pButtonMenu;
+    QPushButton *m_pButtonRecvSetting;
+    QPushButton *m_pButtonCodec;
+    QPushButton *m_pButtonSend;
+    QPushButton *m_pButtonConnect;
 };
 
 #endif // TSETTINGAREA_H

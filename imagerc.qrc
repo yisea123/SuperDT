@@ -35,5 +35,6 @@
         <file>image/icon/exit-gray.png</file>
         <file>image/icon/max-gray.png</file>
         <file>image/icon/min-gray.png</file>
+        <file>image/icon/logo32.png</file>
     </qresource>
 </RCC>
