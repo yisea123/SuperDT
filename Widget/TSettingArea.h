@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QPushbutton>
 #include <QHBoxLayout>
+#include <QVBoxLayout>
 
 class TSettingArea : public QWidget
 {

@@ -14,7 +14,7 @@ void TSettingArea::initVal()
 {
     m_sIconSize = QSize(32,32);
     m_nWidgetMainWidth = 300;
-    m_nButtonMainWidth = m_sIconSize.width() + 4;
+    m_nButtonMainWidth = m_sIconSize.width() + 10;
 }
 
 void TSettingArea::initUI()
@@ -83,10 +83,10 @@ void TSettingArea::initMainButton()
     m_pButtonConnect->setFixedSize(m_sIconSize);
     m_pButtonConnect->setStyleSheet(getImageStytle("lianjie.png"));
 
-    QHBoxLayout *layout = new QHBoxLayout;
+    QVBoxLayout *layout = new QVBoxLayout;
+    layout->addSpacing(5);
     layout->addWidget(m_pButtonMain);
     layout->addStretch(1);
-
     layout->addWidget(m_pButtonUser);
     layout->addWidget(m_pButtonMenu);
     layout->addWidget(m_pButtonRecvSetting);
@@ -94,7 +94,7 @@ void TSettingArea::initMainButton()
     layout->addWidget(m_pButtonSend);
     layout->addWidget(m_pButtonConnect);
     layout->addStretch(1);
-    layout->setContentsMargins(2, 0, 2, 0);
+    layout->setContentsMargins((m_nButtonMainWidth-m_sIconSize.width())/2, 0, (m_nButtonMainWidth-m_sIconSize.width())/2, 0);
 
     m_pWidgetSettingButton->setLayout(layout);
 }
@@ -111,15 +111,14 @@ void TSettingArea::slotButtonMain()
         this->setFixedWidth(m_nWidgetMainWidth + m_sIconSize.width());
     }
 
+    static bool bIsOpen = true;
+    bIsOpen = !bIsOpen;
+
     /*设置按钮的图标*/
-    if(m_pButtonMain->isChecked()){
-        m_pButtonMain->setChecked(false);
-        m_pButtonMain->setStyleSheet(getImageStytle("zuo.png"));
-        qDebug()<<"设置按钮图标  为左" <<m_pButtonMain->isChecked();
-    }else{
-        m_pButtonMain->setChecked(true);
+    if(bIsOpen){
         m_pButtonMain->setStyleSheet(getImageStytle("you.png"));
-        qDebug()<<"设置按钮图标  为右" << m_pButtonMain->isChecked();
+    }else{
+        m_pButtonMain->setStyleSheet(getImageStytle("zuo.png"));
     }
 
 }
