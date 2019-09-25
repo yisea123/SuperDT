@@ -8,8 +8,6 @@ TSettingArea::TSettingArea(QWidget *parent) : QWidget(parent)
     initUI();
 }
 
-
-
 void TSettingArea::initVal()
 {
     m_sIconSize = QSize(32,32);
