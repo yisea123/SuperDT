@@ -359,7 +359,6 @@ void TMsgArea::slotFocusChange(QWidget *old, QWidget *now)
     /*过滤事件  获取当前光标所在TTextEditor*/
     if((nullptr == oldTextEditor) && (nullptr == nowTextEditor))
     {
-        qDebug("新旧部件不在 Editor！");
         return;
     }
 

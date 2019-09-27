@@ -6,6 +6,8 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
+#include "TCardItem.h"
+
 class TSettingArea : public QWidget
 {
     Q_OBJECT
@@ -20,7 +22,8 @@ public slots:
 private:
     void initVal();
     void initUI();
-    void initMainButton();
+    void initButtonArea();
+    void initSettingArea();
 private:
     QString getImageStytle(QString strImage);
     QWidget *m_pWidgetSettingButton;

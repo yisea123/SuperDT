@@ -1,6 +1,8 @@
 ﻿#include <QDebug>
 
 #include "TSettingArea.h"
+#include "TButton.h"
+#include "TCard.h"
 
 TSettingArea::TSettingArea(QWidget *parent) : QWidget(parent)
 {
@@ -33,7 +35,8 @@ void TSettingArea::initUI()
     m_pWidgetSetting->setStyleSheet("QWidget{background-color:#cccccc;}");
 
     /*初始化所有的设置按钮*/
-    initMainButton();
+    initButtonArea();
+    initSettingArea();
 
     m_pHLayout = new QHBoxLayout;
     m_pHLayout->addWidget(m_pWidgetSettingButton);
@@ -44,7 +47,7 @@ void TSettingArea::initUI()
     this->setLayout(m_pHLayout);
 }
 
-void TSettingArea::initMainButton()
+void TSettingArea::initButtonArea()
 {
 
     m_pButtonMain = new QPushButton(m_pWidgetSettingButton);
@@ -95,6 +98,24 @@ void TSettingArea::initMainButton()
     layout->setContentsMargins((m_nButtonMainWidth-m_sIconSize.width())/2, 0, (m_nButtonMainWidth-m_sIconSize.width())/2, 0);
 
     m_pWidgetSettingButton->setLayout(layout);
+}
+
+void TSettingArea::initSettingArea()
+{
+    TCardItem *cardItem1 = new TCardItem("接受显示");
+    TCardItem *cardItem2 = new TCardItem("十六进制显示");
+    TCardItem *cardItem3 = new TCardItem("保存到文件");
+
+    TCard *card1 = new TCard(m_pWidgetSetting);
+    card1->addWidget(cardItem1);
+    card1->addWidget(cardItem2);
+    card1->addWidget(cardItem3);
+
+
+    QVBoxLayout *layout = new QVBoxLayout;
+    layout->addWidget(card1);
+    layout->addStretch(1);
+    m_pWidgetSetting->setLayout(layout);
 }
 
 void TSettingArea::slotButtonMain()

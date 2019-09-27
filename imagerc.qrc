@@ -15,7 +15,6 @@
         <file>image/icon/hex.png</file>
         <file>image/icon/hfenping.png</file>
         <file>image/icon/icon-user.png</file>
-        <file>image/icon/kaiguananniu-kai.png</file>
         <file>image/icon/lianjie.png</file>
         <file>image/icon/lianjie1.png</file>
         <file>image/icon/max.png</file>
@@ -23,7 +22,6 @@
         <file>image/icon/protocol.png</file>
         <file>image/icon/shang.png</file>
         <file>image/icon/str.png</file>
-        <file>image/icon/switch-on.png</file>
         <file>image/icon/upload.png</file>
         <file>image/icon/upload1.png</file>
         <file>image/icon/vfenping.png</file>
@@ -36,5 +34,7 @@
         <file>image/icon/max-gray.png</file>
         <file>image/icon/min-gray.png</file>
         <file>image/icon/logo32.png</file>
+        <file>image/icon/btn_c.png</file>
+        <file>image/icon/btn_n.png</file>
     </qresource>
 </RCC>

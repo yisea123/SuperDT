@@ -31,7 +31,10 @@ SOURCES += \
         MainWidget.cpp \
         Widget/TMsgArea.cpp \
         Widget/TTextEditor.cpp \
-    Widget/TSettingArea.cpp
+    Widget/TSettingArea.cpp \
+    Form/TCard.cpp \
+    Form/TButton.cpp \
+    Form/TCardItem.cpp
 
 HEADERS += \
         MainWidget.h \
@@ -40,10 +43,14 @@ HEADERS += \
         Widget/TitleBar.h \
         Widget/TMsgArea.h \
         Widget/TTextEditor.h \
-    Widget/TSettingArea.h
+    Widget/TSettingArea.h \
+    Form/TCard.h \
+    Form/TButton.h \
+    Form/TCardItem.h
 
 INCLUDEPATH += \
-        Widget
+        Widget \
+        Form
 
 
 # Default rules for deployment.
