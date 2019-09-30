@@ -102,19 +102,24 @@ void TSettingArea::initButtonArea()
 
 void TSettingArea::initSettingArea()
 {
-    TCardItem *cardItem1 = new TCardItem("接受显示");
-    TCardItem *cardItem2 = new TCardItem("十六进制显示");
-    TCardItem *cardItem3 = new TCardItem("保存到文件");
+    TCardItem *cardItem1 = new TCardItem("接受显示",ENM_TBUTTON);
+    TCardItem *cardItem2 = new TCardItem("十六进制显示",ENM_TBUTTON);
+    TCardItem *cardItem3 = new TCardItem("保存到文件",ENM_TCOMBOX);
+    cardItem3->addComBoxItem("192.168.1.1");
+    cardItem3->addComBoxItem("192.168.1.2");
+    cardItem3->addComBoxItem("192.168.1.3");
 
     TCard *card1 = new TCard(m_pWidgetSetting);
     card1->addWidget(cardItem1);
     card1->addWidget(cardItem2);
     card1->addWidget(cardItem3);
-
+    card1->processStyle();
 
     QVBoxLayout *layout = new QVBoxLayout;
+    layout->addSpacing(1);
     layout->addWidget(card1);
     layout->addStretch(1);
+    layout->setContentsMargins(0,0,5,0);
     m_pWidgetSetting->setLayout(layout);
 }
 

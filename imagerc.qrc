@@ -36,5 +36,6 @@
         <file>image/icon/logo32.png</file>
         <file>image/icon/btn_c.png</file>
         <file>image/icon/btn_n.png</file>
+        <file>image/icon/combox-drop.png</file>
     </qresource>
 </RCC>

@@ -5,7 +5,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    QFont globalFont("黑体",12);
+    QFont globalFont("SimHei",12);
     a.setFont(globalFont);
 
     MainWidget w;

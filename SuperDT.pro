@@ -34,7 +34,8 @@ SOURCES += \
     Widget/TSettingArea.cpp \
     Form/TCard.cpp \
     Form/TButton.cpp \
-    Form/TCardItem.cpp
+    Form/TCardItem.cpp \
+    Form/TComBox.cpp
 
 HEADERS += \
         MainWidget.h \
@@ -46,7 +47,8 @@ HEADERS += \
     Widget/TSettingArea.h \
     Form/TCard.h \
     Form/TButton.h \
-    Form/TCardItem.h
+    Form/TCardItem.h \
+    Form/TComBox.h
 
 INCLUDEPATH += \
         Widget \
