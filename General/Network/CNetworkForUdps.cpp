@@ -1,5 +1,5 @@
-#include "CNetworkForUdps.h"
-#include "clog.h"
+﻿#include "CNetworkForUdps.h"
+#include "CLogWin.h"
 
 CNetworkForUdps::CNetworkForUdps(QObject *parent) : QObject(parent)
 {

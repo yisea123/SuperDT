@@ -61,6 +61,7 @@ void TCardItem::creatTComBoxItem()
     m_pLabelText->setText("无标题");
 
     m_pComBox = new TComBox(this);
+    //m_pComBox->setEditable(true);
 
     m_pHLayout = new QHBoxLayout(this);
     m_pHLayout->addWidget(m_pLabelText);

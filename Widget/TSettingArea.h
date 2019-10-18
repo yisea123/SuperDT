@@ -23,11 +23,13 @@ private:
     void initVal();
     void initUI();
     void initButtonArea();
+    void initUserArea();
     void initSettingArea();
 private:
     QString getImageStytle(QString strImage);
-    QWidget *m_pWidgetSettingButton;
-    QWidget *m_pWidgetSetting;
+    QWidget *m_pWidgetButtonArea;
+    QWidget *m_pWidgetSettingArea;
+    QWidget *m_pWidgetUserArea;
     QWidget *m_pWidgetMain;
     QSize m_sIconSize;
     int m_nWidgetMainWidth;

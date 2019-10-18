@@ -1,6 +1,6 @@
-#include "CConnectionForServer.h"
+﻿#include "CConnectionForServer.h"
 #include <QHostAddress>
-#include "clog.h"
+#include "CLogWin.h"
 CConnectionForServer::CConnectionForServer(QTcpSocket *pTcpSocket)
 {
     m_pTcpSocket = pTcpSocket;

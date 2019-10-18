@@ -1,5 +1,6 @@
-#include "CConnectionForUdp.h"
-#include "clog.h"
+﻿#include "CConnectionForUdp.h"
+#include "CLogWin.h"
+
 CConnectionForUdp::CConnectionForUdp(QString strIp, int nPort)
 {
     m_strIp = strIp;

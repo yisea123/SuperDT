@@ -28,6 +28,7 @@
 #include <QThread>
 
 #include "TMsgArea.h"
+#include "clog.h"
 
 TMsgArea::TMsgArea(QWidget *parent)
     : QWidget(parent)
@@ -161,6 +162,7 @@ void TMsgArea::slotVSplitScreen()
     // Qt::Vertical   垂直
     // Qt::Horizontal 水平
     qDebug("垂直分屏");
+
     if(nullptr == m_pNowFocusTextEditor)
         return ;
 
@@ -371,7 +373,7 @@ void TMsgArea::slotFocusChange(QWidget *old, QWidget *now)
         }
         if(nullptr != m_pNowFocusTextEditor){
             m_pNowFocusTextEditor->appendPlainText("现在光标在这");
-
+            logImpInfoWin()<<"现在光标在这！"<<flushWin;
         }
     }
 }

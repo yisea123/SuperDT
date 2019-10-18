@@ -1,5 +1,5 @@
-#include "AbsConnection.h"
-#include "clog.h"
+﻿#include "AbsConnection.h"
+#include "CLogwin.h"
 #include <QtMath>
 
 QString AbsConnection::getIpPort()
@@ -29,7 +29,7 @@ void AbsConnection::slotSend(QString strIpPort, QString strMessage)
     }
 
     if (nRes == -1){
-        logWarnningWin()<<"AbsConnection::slotSend 发送失败:"<<strMyIpPort<<flushWin;
+//        logWarnningWin()<<"AbsConnection::slotSend 发送失败:"<<strMyIpPort<<flushWin;
     }
     else{
         //logWin()<<"AbsConnection::slotSend 发送成功:"<<strMyIpPort<<flushWin;
@@ -50,7 +50,7 @@ void AbsConnection::slotSendByQByteArray(QString strIpPort, QByteArray arrMsg)
 
 
         if(nullptr == m_pTcpSocket){
-            logErrorWin()<<"AbsConnection::send 逻辑错误，m_pTcpSocket为空"<<flushWin;
+//            logErrorWin()<<"AbsConnection::send 逻辑错误，m_pTcpSocket为空"<<flushWin;
             return ;
         }
 
@@ -70,7 +70,7 @@ void AbsConnection::slotDataReceived()
 int AbsConnection::send(QString strMessage)
 {
     if(nullptr == m_pTcpSocket){
-        logErrorWin()<<"AbsConnection::send 逻辑错误，m_pTcpSocket为空"<<flushWin;
+//        logErrorWin()<<"AbsConnection::send 逻辑错误，m_pTcpSocket为空"<<flushWin;
         return -1;
     }
     return m_pTcpSocket->write(strMessage.toUtf8());
@@ -79,7 +79,7 @@ int AbsConnection::send(QString strMessage)
 int AbsConnection::sendByWin(QString strMessage)
 {
     if(nullptr == m_pTcpSocket){
-        logErrorWin()<<"AbsConnection::sendByWin 逻辑错误，m_pTcpSocket为空"<<flushWin;
+//        logErrorWin()<<"AbsConnection::sendByWin 逻辑错误，m_pTcpSocket为空"<<flushWin;
         return -1;
     }
     int nDataLength = strMessage.toUtf8().length();
@@ -94,7 +94,7 @@ int AbsConnection::sendByWin(QString strMessage)
 void AbsConnection::dataRecevied()
 {
     if(nullptr == m_pTcpSocket){
-        logErrorWin()<<"AbsWinConnection::slotDataReceived 逻辑错误，m_pTcpSocket为空"<<flushWin;
+//        logErrorWin()<<"AbsWinConnection::slotDataReceived 逻辑错误，m_pTcpSocket为空"<<flushWin;
         return;
     }
     while (1)//将数据读入缓存
@@ -113,7 +113,7 @@ void AbsConnection::dataRecevied()
 void AbsConnection::dataReceviedByWin()
 {
     if(nullptr == m_pTcpSocket){
-        logErrorWin()<<"AbsWinConnection::slotDataReceived 逻辑错误，m_pTcpSocket为空"<<flushWin;
+//        CLogWin.logError()<<"AbsWinConnection::slotDataReceived 逻辑错误，m_pTcpSocket为空"<<flushWin;
         return;
     }
     while (1)//将数据读入缓存

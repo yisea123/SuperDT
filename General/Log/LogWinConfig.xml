@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<LogWinConfig>
+    <!--输出方式-->
+    <AbleOutDB>true</AbleOutDB>
+    <AbleOutWindow>false</AbleOutWindow>
+    <AbleOutConsole>true</AbleOutConsole>
+    <AbleOutTxt>false</AbleOutTxt>
+
+    <!--数据库路径配置-->
+    <DatabaseType>sqlite</DatabaseType><!--sqlite或mysql-->
+    <DatabasePath>C:/DB/LogWin.db</DatabasePath>
+    <DatabaseUserName>admin</DatabaseUserName>
+    <DatabasePwd>111111</DatabasePwd>
+    <!--文本路径配置-->
+    <TxtPath>C:/LogWin/LogWin.txt</TxtPath>
+
+    <!--输出优先级 (0~5)-->
+    <OutPriority>5</OutPriority>
+
+    <!--产生新的日志文件的周期-->
+    <CreateNewLog>1</CreateNewLog> <!--单位是天-->
+
+    <!--检查缓存周期-->
+    <CheckCacheHours>24</CheckCacheHours>
+
+    <!--清理日志策略 ENM_COUNT(按日志个数来清理)、ENM_SIZE(按日志大小来清理)-->
+    <EnmClearLogStragety>ENM_COUNT</EnmClearLogStragety>
+    <!--清理阈值 由清理策略决定(单位个  或  单位M，最大值要比安全值大)-->
+    <LogMaxSize>200</LogMaxSize>
+    <LogSafetySize>50</LogSafetySize>
+
+
+</LogWinConfig>

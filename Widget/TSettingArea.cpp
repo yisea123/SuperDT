@@ -3,6 +3,7 @@
 #include "TSettingArea.h"
 #include "TButton.h"
 #include "TCard.h"
+#include "NetworkApp.h"
 
 TSettingArea::TSettingArea(QWidget *parent) : QWidget(parent)
 {
@@ -24,23 +25,38 @@ void TSettingArea::initUI()
     this->setMinimumWidth(m_nButtonMainWidth);
     this->setFixedWidth(m_nWidgetMainWidth + m_sIconSize.width());
 
-    m_pWidgetSettingButton = new QWidget(this);
-    m_pWidgetSettingButton->setFixedWidth(m_nButtonMainWidth);
-    m_pWidgetSettingButton->setMinimumWidth(m_nButtonMainWidth);
-    m_pWidgetSettingButton->setStyleSheet("QWidget{background-color:#bebebe;}");
+    /*设置条*/
+    m_pWidgetButtonArea = new QWidget(this);
+    m_pWidgetButtonArea->setFixedWidth(m_nButtonMainWidth);
+    m_pWidgetButtonArea->setMinimumWidth(m_nButtonMainWidth);
+    m_pWidgetButtonArea->setStyleSheet("QWidget{background-color:#bebebe;}");
 
-    m_pWidgetSetting = new QWidget(this);
-    m_pWidgetSetting->setFixedWidth(m_nWidgetMainWidth);
-    m_pWidgetSetting->setMinimumWidth(m_nWidgetMainWidth);
-    m_pWidgetSetting->setStyleSheet("QWidget{background-color:#cccccc;}");
+    /*用户信息显示区*/
+    m_pWidgetUserArea = new QWidget(this);
+    m_pWidgetUserArea->setFixedSize(m_nWidgetMainWidth,210);
+    m_pWidgetUserArea->setMinimumWidth(m_nWidgetMainWidth);
+    m_pWidgetUserArea->setStyleSheet("QWidget{background-color:#cccccc;}");
 
-    /*初始化所有的设置按钮*/
+    /*参数设置区*/
+    m_pWidgetSettingArea = new QWidget(this);
+    m_pWidgetSettingArea->setFixedWidth(m_nWidgetMainWidth);
+    m_pWidgetSettingArea->setMinimumWidth(m_nWidgetMainWidth);
+    m_pWidgetSettingArea->setStyleSheet("QWidget{background-color:#cccccc;}");
+
+
+    /*初始化按钮条、用户区、参数设置区*/
     initButtonArea();
+    initUserArea();
     initSettingArea();
 
+    QVBoxLayout *vLayout = new QVBoxLayout;
+    vLayout->addWidget(m_pWidgetUserArea);
+    vLayout->addWidget(m_pWidgetSettingArea);
+
+
     m_pHLayout = new QHBoxLayout;
-    m_pHLayout->addWidget(m_pWidgetSettingButton);
-    m_pHLayout->addWidget(m_pWidgetSetting);
+    m_pHLayout->addWidget(m_pWidgetButtonArea);
+    m_pHLayout->addLayout(vLayout);
     m_pHLayout->setSpacing(0);
     m_pHLayout->setContentsMargins(0, 0, 0, 0);
 
@@ -50,37 +66,37 @@ void TSettingArea::initUI()
 void TSettingArea::initButtonArea()
 {
 
-    m_pButtonMain = new QPushButton(m_pWidgetSettingButton);
+    m_pButtonMain = new QPushButton(m_pWidgetButtonArea);
     m_pButtonMain->setFixedSize(m_sIconSize);
     m_pButtonMain->setCheckable(true); // 设置允许选中
     m_pButtonMain->setStyleSheet(getImageStytle("you.png"));
     connect(m_pButtonMain,SIGNAL(clicked()),this,SLOT(slotButtonMain()));
 
-    m_pButtonUser = new QPushButton(m_pWidgetSettingButton);
+    m_pButtonUser = new QPushButton(m_pWidgetButtonArea);
     m_pButtonUser->setFixedSize(m_sIconSize);
     m_pButtonUser->setStyleSheet(getImageStytle("icon-user.png"));
 
-    m_pButtonMenu = new QPushButton(m_pWidgetSettingButton);
+    m_pButtonMenu = new QPushButton(m_pWidgetButtonArea);
     m_pButtonMenu->setFixedSize(m_sIconSize);
     m_pButtonMenu->setStyleSheet(getImageStytle("caidan.png"));
 
-//    m_pButtonUser = new QPushButton(m_pWidgetSettingButton);
+//    m_pButtonUser = new QPushButton(m_pWidgetButtonArea);
 //    m_pButtonMain->setFixedSize(m_sIconSize);
 //    m_pButtonMain->setStyleSheet(getImageStytle("you.png"));
 
-    m_pButtonRecvSetting = new QPushButton(m_pWidgetSettingButton);
+    m_pButtonRecvSetting = new QPushButton(m_pWidgetButtonArea);
     m_pButtonRecvSetting->setFixedSize(m_sIconSize);
     m_pButtonRecvSetting->setStyleSheet(getImageStytle("download.png"));
 
-    m_pButtonCodec = new QPushButton(m_pWidgetSettingButton);
+    m_pButtonCodec = new QPushButton(m_pWidgetButtonArea);
     m_pButtonCodec->setFixedSize(m_sIconSize);
     m_pButtonCodec->setStyleSheet(getImageStytle("hex.png"));
 
-    m_pButtonSend = new QPushButton(m_pWidgetSettingButton);
+    m_pButtonSend = new QPushButton(m_pWidgetButtonArea);
     m_pButtonSend->setFixedSize(m_sIconSize);
     m_pButtonSend->setStyleSheet(getImageStytle("fasong.png"));
 
-    m_pButtonConnect = new QPushButton(m_pWidgetSettingButton);
+    m_pButtonConnect = new QPushButton(m_pWidgetButtonArea);
     m_pButtonConnect->setFixedSize(m_sIconSize);
     m_pButtonConnect->setStyleSheet(getImageStytle("lianjie.png"));
 
@@ -97,41 +113,30 @@ void TSettingArea::initButtonArea()
     layout->addStretch(1);
     layout->setContentsMargins((m_nButtonMainWidth-m_sIconSize.width())/2, 0, (m_nButtonMainWidth-m_sIconSize.width())/2, 0);
 
-    m_pWidgetSettingButton->setLayout(layout);
+    m_pWidgetButtonArea->setLayout(layout);
+}
+
+void TSettingArea::initUserArea()
+{
+
 }
 
 void TSettingArea::initSettingArea()
 {
-    TCardItem *cardItem1 = new TCardItem("接受显示",ENM_TBUTTON);
-    TCardItem *cardItem2 = new TCardItem("十六进制显示",ENM_TBUTTON);
-    TCardItem *cardItem3 = new TCardItem("保存到文件",ENM_TCOMBOX);
-    cardItem3->addComBoxItem("192.168.1.1");
-    cardItem3->addComBoxItem("192.168.1.2");
-    cardItem3->addComBoxItem("192.168.1.3");
 
-    TCard *card1 = new TCard(m_pWidgetSetting);
-    card1->addWidget(cardItem1);
-    card1->addWidget(cardItem2);
-    card1->addWidget(cardItem3);
-    card1->processStyle();
-
-    QVBoxLayout *layout = new QVBoxLayout;
-    layout->addSpacing(1);
-    layout->addWidget(card1);
-    layout->addStretch(1);
-    layout->setContentsMargins(0,0,5,0);
-    m_pWidgetSetting->setLayout(layout);
+    NetworkApp *networkApp = new NetworkApp(m_pWidgetSettingArea);
+    //networkApp->setFixedWidth(m_nWidgetMainWidth - 10);
 }
 
 void TSettingArea::slotButtonMain()
 {
     qDebug()<<"设置按键";
 
-    if(m_pWidgetSetting->isVisible()){
-        m_pWidgetSetting->setVisible(false);
+    if(m_pWidgetSettingArea->isVisible()){
+        m_pWidgetSettingArea->setVisible(false);
         this->setFixedWidth(m_nButtonMainWidth);
     }else{
-        m_pWidgetSetting->setVisible(true);
+        m_pWidgetSettingArea->setVisible(true);
         this->setFixedWidth(m_nWidgetMainWidth + m_sIconSize.width());
     }
 

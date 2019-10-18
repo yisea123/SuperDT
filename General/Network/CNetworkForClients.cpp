@@ -1,5 +1,5 @@
-#include "CNetworkForClients.h"
-#include "clog.h"
+﻿#include "CNetworkForClients.h"
+#include "CLogWin.h"
 
 CNetworkForClients::CNetworkForClients(bool bIsWinNetwork, QObject *parent) : QObject(parent)
 {

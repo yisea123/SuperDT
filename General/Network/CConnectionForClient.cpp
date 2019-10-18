@@ -1,5 +1,5 @@
-#include "CConnectionForClient.h"
-#include "clog.h"
+﻿#include "CConnectionForClient.h"
+#include "CLogWin.h"
 CConnectionForClient::CConnectionForClient(QString strIp, int nPort)
 {
     m_strIp = strIp;

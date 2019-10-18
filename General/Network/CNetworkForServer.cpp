@@ -1,5 +1,5 @@
-#include "CNetworkForServer.h"
-#include "clog.h"
+﻿#include "CNetworkForServer.h"
+#include "CLogWin.h"
 
 
 CNetworkForServer::CNetworkForServer(int nPort, INetworkInterface *pNotifier, QObject *parent) : QObject(parent)

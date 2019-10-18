@@ -5,6 +5,9 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += network
+QT       += sql
+QT       += xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,34 +28,70 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        Widget/StatusBar.cpp \
-        Widget/TitleBar.cpp \
-        main.cpp \
-        MainWidget.cpp \
-        Widget/TMsgArea.cpp \
-        Widget/TTextEditor.cpp \
+    Widget/StatusBar.cpp \
+    Widget/TitleBar.cpp \
+    main.cpp \
+    MainWidget.cpp \
+    Widget/TMsgArea.cpp \
+    Widget/TTextEditor.cpp \
     Widget/TSettingArea.cpp \
     Form/TCard.cpp \
     Form/TButton.cpp \
     Form/TCardItem.cpp \
-    Form/TComBox.cpp
+    Form/TComBox.cpp \
+#    General/Network/AbsConnection.cpp \
+#    General/Network/CConnectionForClient.cpp \
+#    General/Network/CConnectionForServer.cpp \
+#    General/Network/CConnectionForUdp.cpp \
+#    General/Network/CNetworkForClients.cpp \
+#    General/Network/CNetworkForServer.cpp \
+#    General/Network/CNetworkForUdps.cpp \
+    Application/NetworkApp.cpp \
+    Form/TCardUserItem.cpp \
+    General/Log/CLogWin.cpp \
+    General/Log/CLogWinForWindow.cpp \
+    General/Log/CLogWinForDB.cpp \
+    General/Log/CLogWinForTxt.cpp \
+    General/Log/CLogWinEnm.cpp
+
 
 HEADERS += \
-        MainWidget.h \
-        Widget/StatusBar.h \
-        Widget/TWindowLayoutDefine.h \
-        Widget/TitleBar.h \
-        Widget/TMsgArea.h \
-        Widget/TTextEditor.h \
+    MainWidget.h \
+    Widget/StatusBar.h \
+    Widget/TWindowLayoutDefine.h \
+    Widget/TitleBar.h \
+    Widget/TMsgArea.h \
+    Widget/TTextEditor.h \
     Widget/TSettingArea.h \
     Form/TCard.h \
     Form/TButton.h \
     Form/TCardItem.h \
-    Form/TComBox.h
+    Form/TComBox.h \
+#    General/Network/AbsConnection.h \
+#    General/Network/CConnectionForClient.h \
+#    General/Network/CConnectionForServer.h \
+#    General/Network/CConnectionForUdp.h \
+#    General/Network/CNetworkForClients.h \
+#    General/Network/CNetworkForServer.h \
+#    General/Network/CNetworkForUdps.h \
+#    General/Network/INetworkInterface.h \
+    General/Log/clog.h \
+    General/Log/CLogWin.h \
+    Application/NetworkApp.h \
+    Form/TCardUserItem.h \
+    General/Log/CLogWin.h \
+    General/Log/CLogWinForWindow.h \
+    General/Log/CLogWinForDB.h \
+    General/Log/CLogWinForTxt.h \
+    General/Log/CLogWinEnm.h
 
 INCLUDEPATH += \
         Widget \
-        Form
+        Form \
+        General/Log \
+        General/Network \
+        General/Database \
+        Application \
 
 
 # Default rules for deployment.
@@ -62,3 +101,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     imagerc.qrc
+
+RC_FILE += icon.rc
+
+DISTFILES += \
+    General/Log/LogWinConfig.xml
+
