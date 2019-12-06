@@ -13,10 +13,8 @@ int main(int argc, char *argv[])
     QFont globalFont("SimHei",12);
     a.setFont(globalFont);
 
-    test1();
+//    test1();
 
-//    QWidget w;
-//    w.show();
     MainWidget w;
     w.show();
 
@@ -38,11 +36,11 @@ void test1()
     QString tstr = "hello";
     QByteArray tarr("byteayy");
 
-    //for(int i = 0; i< 10;i++){
+    for(int i = 0; i< 2;i++){
     logFatalWin()<< "ssssssssssssssss" <<tb<<tc<<ts<<ti<<td<<tf<<tstr<<tarr<<flushWin;
     logErrorWin()<< "ssssssssssssssss" <<tb<<tc<<ts<<ti<<td<<tf<<tstr<<tarr<<flushWin;
     logWarnningWin()<< "ssssssssssssssss" <<tb<<tc<<ts<<ti<<td<<tf<<tstr<<tarr<< flushWin;
     logImpInfoWin()<< "ssssssssssssssss" <<tb<<tc<<ts<<ti<<td<<tf<<tstr<<tarr<< flushWin;
     logDebugWin()<< "ssssssssssssssss" <<tb<<tc<<ts<<ti<<td<<tf<<tstr<<tarr<< flushWin;
-    //}
+    }
 }

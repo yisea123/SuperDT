@@ -13,15 +13,11 @@ public:
 
     static CLogWinForWindow *getInstance();
     void appendLog(QString strLog);
-
 private:
     void initUI();
-
 private:
     QTextEdit *m_pTextEdit;
     QGridLayout *m_pGLayout;
-public slots:
-    void exit();
 };
 
 #endif // CLOGWINFORWINDOW_H

@@ -73,7 +73,6 @@ signals:
     void signalRedirect(QString strDate);
     void signalCheckCache();
 private slots:
-    void slotFinshed();
     void slotTimeOutHours();
     void slotTimeOutDays();
 private:
@@ -93,6 +92,7 @@ private:
     EnmDisplayTimeStyle m_enmTimeDBIdStyle = TIME_STYLE_3;
     EnmLogLevel m_currentLogLevel = LEVEL_DEBUG;
     QMutex m_qMutex;
+    bool m_bHaveLog = false;
     /*打印信息构成*/
     QString m_strDBId;
     QString m_strLevel;
@@ -107,13 +107,7 @@ private:
     bool m_bAbleOutDB = false;
     bool m_bAbleOutWindow = false;
     bool m_bAbleOutConsole = true;
-    bool m_bAbleOutTxt = false;
-
-    /*路径 和 名称*/
-    QString m_strPathDB;
-    QString m_strNameDB;
-    QString m_strPathTxt;
-    QString m_strNameTxt;
+    bool m_bAbleOutTxt = true;
 
     /*输出优先级控制*/
     int m_nPriority = 5;            //目前有0~5  个优先级  0关闭所有输出

@@ -45,7 +45,8 @@ void TSettingArea::initUI()
 
 
     /*初始化按钮条、用户区、参数设置区*/
-    initButtonArea();
+    TSettingBtnBar *bar = new TSettingBtnBar(m_pWidgetButtonArea);
+//    initButtonArea();
     initUserArea();
     initSettingArea();
 

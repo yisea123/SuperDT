@@ -1,8 +1,9 @@
 ﻿#include "MainWidget.h"
 #include "TWindowLayoutDefine.h"
-
+#include "clog.h"
 
 #include <QVBoxLayout>
+#include <QTimer>
 
 MainWidget::MainWidget(QWidget *parent)
     : QWidget(parent)
@@ -17,7 +18,10 @@ MainWidget::~MainWidget()
 
 void MainWidget::initUI()
 {
-    // QSplitter
+//    QTimer *timerLog = new QTimer(this);
+//    connect(timerLog,SIGNAL(timeout()),this,SLOT(slotLog()));
+//    timerLog->start(2000);
+
 //    this->setWindowTitle("QQ ");
 //    this->setWindowIcon(QIcon(":/images/po.jpg"));
     this->setWindowFlags(Qt::FramelessWindowHint);//去掉标题栏
@@ -38,7 +42,6 @@ void MainWidget::initUI()
 
     m_pSettingArea = new TSettingArea(this);
 
-
     QSizeGrip *sizeGrip = new QSizeGrip(this);//拖拽
 
     /*Msg和Setting*/
@@ -57,5 +60,14 @@ void MainWidget::initUI()
     layout->setContentsMargins(0, 0, 0, 0);
 
     this->setLayout(layout);
+}
+
+void MainWidget::slotLog()
+{
+    logFatalWin()<< "ssssssssssssssss" <<flushWin;
+    logErrorWin()<< "ssssssssssssssss" <<flushWin;
+    logWarnningWin()<< "ssssssssssssssss" << flushWin;
+    logImpInfoWin()<< "ssssssssssssssss" << flushWin;
+    logDebugWin()<< "ssssssssssssssss" << flushWin;
 }
 

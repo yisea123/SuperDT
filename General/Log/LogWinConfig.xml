@@ -4,7 +4,7 @@
     <AbleOutDB>true</AbleOutDB>
     <AbleOutWindow>false</AbleOutWindow>
     <AbleOutConsole>true</AbleOutConsole>
-    <AbleOutTxt>false</AbleOutTxt>
+    <AbleOutTxt>true</AbleOutTxt>
 
     <!--数据库路径配置-->
     <DatabaseType>sqlite</DatabaseType><!--sqlite或mysql-->

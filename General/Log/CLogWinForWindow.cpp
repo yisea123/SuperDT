@@ -1,5 +1,4 @@
 ﻿#include "CLogWinForWindow.h"
-#include <QDebug>
 #include <QPalette>
 
 CLogWinForWindow::CLogWinForWindow()
@@ -27,7 +26,6 @@ void CLogWinForWindow::initUI()
 {
     this->resize(1200,200);
     this->setWindowTitle("LogWin");
-    //this->setWindowOpacity(0.3);
     this->setWindowFlags(Qt::WindowStaysOnTopHint);//窗口保持最前
 
     m_pTextEdit = new QTextEdit(this);
@@ -38,9 +36,4 @@ void CLogWinForWindow::initUI()
 
     this->setLayout(m_pGLayout);
     this->show();
-}
-
-void CLogWinForWindow::exit()
-{
-
 }

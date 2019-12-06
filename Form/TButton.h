@@ -12,6 +12,7 @@ public:
     bool getStatus(){return m_bStatus;}
 signals:
     void signalChanged(bool status);
+
 public slots:
     void slotClicked();
 private:

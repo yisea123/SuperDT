@@ -26,7 +26,6 @@ typedef enum{
 class CLogWinEnm
 {
 public:
-    //访问协议
     static EnmClearLogStragety getClearLogStragetyFromString(QString strClearLogStragety);
     static QString getClearLogStragetyFromEnm(EnmClearLogStragety enmClearLogStragety);
 };

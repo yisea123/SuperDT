@@ -52,7 +52,9 @@ SOURCES += \
     General/Log/CLogWinForWindow.cpp \
     General/Log/CLogWinForDB.cpp \
     General/Log/CLogWinForTxt.cpp \
-    General/Log/CLogWinEnm.cpp
+    General/Log/CLogWinEnm.cpp \
+    Widget/TSettingBtnBar.cpp \
+    Form/TLockButton.cpp
 
 
 HEADERS += \
@@ -83,7 +85,9 @@ HEADERS += \
     General/Log/CLogWinForWindow.h \
     General/Log/CLogWinForDB.h \
     General/Log/CLogWinForTxt.h \
-    General/Log/CLogWinEnm.h
+    General/Log/CLogWinEnm.h \
+    Widget/TSettingBtnBar.h \
+    Form/TLockButton.h
 
 INCLUDEPATH += \
         Widget \

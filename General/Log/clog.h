@@ -4,17 +4,13 @@
 #include "CLogWin.h"
 
 
-#define logWin()            CLogWin()::getInstance()->log()
+#define logWin()            CLogWin()::getInstance()->log(__FILE__,__FUNCTION__,__LINE__)
 #define logFatalWin()       CLogWin::getInstance()->logFatal(__FILE__,__FUNCTION__,__LINE__)
 #define logErrorWin()       CLogWin::getInstance()->logError(__FILE__,__FUNCTION__,__LINE__)
 #define logWarnningWin()    CLogWin::getInstance()->logWarning(__FILE__,__FUNCTION__,__LINE__)
 #define logImpInfoWin()     CLogWin::getInstance()->logInfo(__FILE__,__FUNCTION__,__LINE__)
 #define logDebugWin()       CLogWin::getInstance()->logDebug(__FILE__,__FUNCTION__,__LINE__)
 
-#define LOG_RED "\033[31m" //该格式是Qt设置控制台打印属性的格式，详情可以百度
-#define LOG_GREEN "\033[32m" //该格式是Qt设置控制台打印属性的格式，详情可以百度
-#define LOG_YELLOW "\033[33m" //该格式是Qt设置控制台打印属性的格式，详情可以百度
-#define LOG_BLACK "\033[30m" //该格式是Qt设置控制台打印属性的格式，详情可以百度
 
 /**
 注意！！如果使用继承打印的方式，在一个对象同时运行多个线程且多个线程同时通过继承打印打印日志时，将引起日志混乱。

@@ -7,6 +7,7 @@
 #include <QVBoxLayout>
 
 #include "TCardItem.h"
+#include "TSettingBtnBar.h"
 
 class TSettingArea : public QWidget
 {

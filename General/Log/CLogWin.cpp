@@ -27,16 +27,15 @@ CLogWin *CLogWin::getInstance()
 void CLogWin::init()
 {
     this->loadConfig();//获取配置文件
-
     this->setTimeStyle(TIME_STYLE_2);
 
     m_pTimerDays = new QTimer(this);
     connect(m_pTimerDays,SIGNAL(timeout()),this,SLOT(slotTimeOutDays()));
-    m_pTimerDays->start(1*1000); //24*60*60*1000 (天)
+    m_pTimerDays->start(ONE_DAY_FOR_MSEC); //24*60*60*1000 (天)
 
     m_pTimerHous = new QTimer(this);
     connect(m_pTimerHous,SIGNAL(timeout()),this,SLOT(slotTimeOutHours()));
-    m_pTimerHous->start(1*1000);          //60*60*1000 (小时)
+    m_pTimerHous->start(ONE_HOUR_FOR_MSEC);          //60*60*1000 (小时)
 
     /*绑定文件输出重定向槽函数*/
     if(m_bAbleOutDB){
@@ -101,12 +100,6 @@ CLogWin &CLogWin::logDebug(const char *file, const char *func, int line)
 
     return *this;
 }
-
-void CLogWin::slotFinshed()
-{
-    qDebug()<<"LogWin线程结束!";
-}
-
 
 void CLogWin::loadConfig()
 {
@@ -235,10 +228,8 @@ CLogWin &CLogWin::operator<<(const char *s)
             return *this;
 
         /*输出日志信息*/
-        jointMsg();//拼接信息     
-        m_qMutex.lock();
+        jointMsg();//拼接信息
         outLog();
-        m_qMutex.unlock();
     }else{
         m_strMsg += s;
     }
@@ -264,7 +255,7 @@ void CLogWin::outLog()
     /*输出到窗口*/
     if(m_bAbleOutWindow)
     {
-        CLogWinForWindow::getInstance()->appendLog(m_strAllMsg);
+        //CLogWinForWindow::getInstance()->appendLog(m_strAllMsg);
     }
 
     /*输出到文本文件*/

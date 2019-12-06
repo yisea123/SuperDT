@@ -39,11 +39,11 @@ void CLogWinForDB::loadLogWinConfig(QDomElement root)
         if (!element.isNull())
         {
             if(element.tagName() == "DatabasePath"){
-               m_strDBPath = element.text();
+                m_strDBPath = element.text();
             }else if(element.tagName() == "EnmClearLogStragety"){
-               m_enmClearLogStragety = CLogWinEnm::getClearLogStragetyFromString(element.text());
+                m_enmClearLogStragety = CLogWinEnm::getClearLogStragetyFromString(element.text());
             }else if(element.tagName() == "LogMaxSize"){
-               m_nLogMaxSize = CLogWin::textToInt(element.text());
+                m_nLogMaxSize = CLogWin::textToInt(element.text());
             }else if(element.tagName() == "LogSafetySize"){
                 m_nLogSafetySize = CLogWin::textToInt(element.text());
             }
@@ -51,8 +51,6 @@ void CLogWinForDB::loadLogWinConfig(QDomElement root)
             node = node.nextSiblingElement();
         }
     }
-
-    qDebug()<<"DB加载配置文件完毕!" <<m_strDBPath<<m_enmClearLogStragety<<m_nLogMaxSize<<m_nLogSafetySize;
 }
 
 bool CLogWinForDB::initDB()
@@ -71,8 +69,7 @@ bool CLogWinForDB::openConnection()
         return true;
     }
     else{
-        qDebug()<<"CLogWinForDB::openConnection 本地数据库初始连接失败，"
-                       "试图打开的地址为"<<m_strDBPath;
+        qDebug()<<"CLogWinForDB::openConnection 本地数据库初始连接失败 试图打开的地址为"<<m_strDBPath;
         return false;
     }
 }
@@ -85,11 +82,8 @@ void CLogWinForDB::closeConnection()
 
 void CLogWinForDB::creatTable(QString strTableName, QVector<QString> vecColumnNames)
 {
-     if(isHasTable(m_strTableName))
-         return ; //表存在  直接返回
-
-     qDebug()<<"创建表:"<<strTableName;
-
+    if(isHasTable(m_strTableName))
+        return ; //表存在  直接返回
     m_strTableName = strTableName;
 
     QVector<QString> m_vecColumnNames;
@@ -217,7 +211,6 @@ void CLogWinForDB::clearLogToSafe()
     this->removeTable(m_listTableName.takeFirst());  //删除所有表中最前边的一张表
 
     int nDBSize = getDBArgForStragety(); //根据策略获取日志的个数 或 大小（MB）
-    qDebug()<<"日志数:"<<nDBSize;
     if(nDBSize > m_nLogSafetySize)
         clearLogToSafe();
 }

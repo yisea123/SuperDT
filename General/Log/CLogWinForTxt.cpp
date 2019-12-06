@@ -1,5 +1,4 @@
 ﻿#include "CLogWinForTxt.h"
-#include <QDebug>
 
 CLogWinForTxt::CLogWinForTxt()
 {
@@ -50,7 +49,6 @@ void CLogWinForTxt::loadLogWinConfig(QDomElement root)
             node = node.nextSiblingElement();
         }
     }
-    qDebug()<<"Txt加载配置文件完毕!" <<m_strFilePath<<m_enmClearLogStragety<<m_nLogMaxSize<<m_nLogSafetySize;
 }
 
 
@@ -82,16 +80,14 @@ void CLogWinForTxt::slotRedirect(QString strDate)
 
     m_pFileLog = new QFile(m_strFilePath);
     if(m_pFileLog->open(QIODevice::ReadWrite)){
-        qDebug()<<"新的日志文件创建成功!";
         m_pFileLog->close();
     }else{
-        qDebug()<<"新的日志文件创建失败!";
+
     }
 }
 
 void CLogWinForTxt::slotCheckCache()
 {
-    qDebug()<<"检查日志缓存!";
     int dirSize = getDirArgForStragety();
 
     if(dirSize > m_nLogMaxSize)
@@ -108,7 +104,6 @@ void CLogWinForTxt::clearLogToSafe()
     QString strFileName;
     strFileName = fileNameList.at(fileNameList.count()-1); //获取最旧的日志文件
     QFile::remove(m_strDirPath+strFileName);
-    qDebug()<<"删除日志文件"<<(m_strDirPath+strFileName);
 
     int dirSize = getDirArgForStragety();
     /*递归删除  直至文件夹大小达到m_nLogSafetySize以内*/
