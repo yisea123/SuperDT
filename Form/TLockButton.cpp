@@ -1,4 +1,5 @@
 ﻿#include "TLockButton.h"
+#include <QDebug>
 
 TLockButton::TLockButton(QString strId,QString strImgUrlN,QString strImgUrlC,QWidget *parent )
     :QPushButton(parent)
@@ -8,6 +9,7 @@ TLockButton::TLockButton(QString strId,QString strImgUrlN,QString strImgUrlC,QWi
     m_strImgUrlC = strImgUrlC;
     m_strTextN = "#ffffff";
     m_strTextC = "#ffffff";
+    m_strTextColor = "#ffffff";
     connect(this,SIGNAL(clicked(bool)),this,SLOT(slotClicked(bool)));
     refreshButton();
 }
@@ -33,6 +35,7 @@ void TLockButton::refreshButton()
                         "QPushButton:checked{border-image:url("+ m_strImgUrlC +");color:"+ m_strTextColor +";}"
                         "QPushButton:hover{border-image:url("+ m_strImgUrlC +");color:"+ m_strTextColor +";}"
                         );
+    qDebug()<<"QPushButton:checked{border-image:url("+ m_strImgUrlC +");color:"+ m_strTextColor +";}";
 }
 
 void TLockButton::slotClicked(bool bState)

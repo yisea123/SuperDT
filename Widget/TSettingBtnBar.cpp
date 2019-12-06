@@ -7,13 +7,12 @@ TSettingBtnBar::TSettingBtnBar(QWidget *parent)
     :QWidget(parent)
 {
     m_sIconSize = QSize(24,24);
-    m_strImgUrl = "image/setting";
+    m_strImgUrl = ":/image/setting/";
     init();
 }
 
 void TSettingBtnBar::init()
 {
-
     createView();
 }
 
@@ -22,7 +21,7 @@ void TSettingBtnBar::createView()
     this->setFixedWidth(60);
 
     QStringList listUrl;
-    listUrl <<"you"<<"icon-user"<<"caidan"<<"download"<<"hex"<<"fasong"<<"lianjie";
+    listUrl <<"user"<<"menu"<<"protocol"<<"download"<<"send";
 
     foreach(QString strUrl,listUrl){
         TLockButton *pSettingBtn = new TLockButton(strUrl,m_strImgUrl + strUrl + "_c.png",m_strImgUrl + strUrl + "_n.png",this);
